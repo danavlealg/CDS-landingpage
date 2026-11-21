@@ -316,7 +316,7 @@ function createEventCard(event, index) {
     button.textContent = "QUIERO ASISTIR ↗";
 
     button.href =
-        "https://ig.me/m/" + encodeURIComponent(INSTAGRAM_USER);
+        "https://ig.me/m/" + encodeURIComponent(INSTAGRAM_USER = "cds.col");
 
     button.target = "_blank";
     button.rel = "noopener noreferrer";
