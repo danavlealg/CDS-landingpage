@@ -8,7 +8,7 @@ const SHEET_URL =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vQPyVkctIOLaV2icmhoyYw-MHldcWAWRj1LA3n0wJAnXqAbNeoPDqIpLzp_idZtadmrngi3w7h_6eHj/pub?output=csv";
 
 // Escribe el usuario oficial de Instagram sin @
-const INSTAGRAM_USER = "TU_USUARIO";
+const INSTAGRAM_USER = "cds.col";
 
 // Eventos visibles inicialmente
 const INITIAL_EVENTS = 3;
