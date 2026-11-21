@@ -1,8 +1,4 @@
 
-/* =====================================
-   CDS - ESTILOS GENERALES
-===================================== */
-
 :root {
     --background: #101010;
     --surface: #191919;
@@ -55,10 +51,7 @@ button {
     text-transform: uppercase;
 }
 
-
-/* =====================================
-   HEADER
-===================================== */
+/* HEADER */
 
 .header {
     min-height: 110px;
@@ -82,10 +75,7 @@ button {
     font-weight: 600;
 }
 
-
-/* =====================================
-   HERO
-===================================== */
+/* HERO */
 
 .hero {
     padding-top: 90px;
@@ -134,10 +124,7 @@ button {
     transform: scale(1.02);
 }
 
-
-/* =====================================
-   REDES SOCIALES
-===================================== */
+/* REDES SOCIALES */
 
 .social-section {
     padding: 35px 0 75px;
@@ -147,13 +134,17 @@ button {
 .social-links {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 30px;
     margin-top: 22px;
 }
 
 .social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
     color: var(--text);
-    font-size: 14px;
+    font-size: 13px;
     transition: color 0.2s ease;
 }
 
@@ -161,10 +152,15 @@ button {
     color: var(--muted);
 }
 
+.social-icon {
+    display: block;
+    width: 21px;
+    height: 21px;
+    color: var(--text);
+    flex-shrink: 0;
+}
 
-/* =====================================
-   AGENDA CDS
-===================================== */
+/* AGENDA */
 
 .agenda-section {
     padding-top: 95px;
@@ -209,13 +205,11 @@ button {
     white-space: nowrap;
 }
 
-
-/* LISTA DE EVENTOS */
+/* EVENTOS */
 
 .events-list {
     display: flex;
     flex-direction: column;
-    gap: 0;
 }
 
 .event-card {
@@ -279,6 +273,7 @@ button {
 }
 
 .event-image {
+    display: block;
     width: 100%;
     max-width: 180px;
     height: 110px;
@@ -359,17 +354,13 @@ button {
         opacity: 0;
         transform: translateY(10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-
-/* =====================================
-   BOTONES PRINCIPALES
-===================================== */
+/* BOTONES PRINCIPALES */
 
 .explore-section {
     padding-top: 90px;
@@ -433,10 +424,7 @@ button {
     font-size: 21px;
 }
 
-
-/* =====================================
-   FOOTER
-===================================== */
+/* FOOTER */
 
 .footer {
     min-height: 110px;
@@ -461,13 +449,9 @@ button {
     text-align: center;
 }
 
-
-/* =====================================
-   TABLET
-===================================== */
+/* TABLET */
 
 @media (max-width: 900px) {
-
     .hero h1 {
         letter-spacing: -3px;
     }
@@ -485,16 +469,11 @@ button {
     .event-actions {
         grid-column: 2;
     }
-
 }
 
-
-/* =====================================
-   MÓVILES
-===================================== */
+/* MÓVILES */
 
 @media (max-width: 600px) {
-
     .container {
         width: 88%;
     }
@@ -539,6 +518,11 @@ button {
 
     .social-links a {
         font-size: 12px;
+    }
+
+    .social-icon {
+        width: 19px;
+        height: 19px;
     }
 
     .agenda-section {
@@ -615,16 +599,11 @@ button {
     .footer-message {
         display: none;
     }
-
 }
 
-
-/* =====================================
-   ACCESIBILIDAD
-===================================== */
+/* ACCESIBILIDAD */
 
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -632,5 +611,4 @@ button {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
     }
-
 }
