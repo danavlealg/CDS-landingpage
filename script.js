@@ -1,26 +1,41 @@
 
+
 /* =====================================
    CDS - CONFIGURACIÓN
 ===================================== */
 
-// Enlace público de Google Sheets
 const SHEET_URL =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vQPyVkctIOLaV2icmhoyYw-MHldcWAWRj1LA3n0wJAnXqAbNeoPDqIpLzp_idZtadmrngi3w7h_6eHj/pub?output=csv";
 
-// Usuario oficial de Instagram, sin @
+// Escribe el usuario oficial de Instagram sin @
 const INSTAGRAM_USER = "TU_USUARIO";
 
-// Cantidad de eventos que aparecen inicialmente
+// Eventos visibles inicialmente
 const INITIAL_EVENTS = 3;
 
 
 /* =====================================
-   ELEMENTOS HTML
+   ELEMENTOS DE LA PÁGINA
 ===================================== */
 
 const eventsList = document.getElementById("events-list");
 const eventsFooter = document.getElementById("events-footer");
 const toggleEventsButton = document.getElementById("toggle-events");
+
+
+/* =====================================
+   NORMALIZAR TEXTO
+===================================== */
+
+function normalizeText(value) {
+
+    return String(value || "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+}
 
 
 /* =====================================
@@ -37,25 +52,28 @@ function parseCSV(text) {
     for (let i = 0; i < text.length; i++) {
 
         const char = text[i];
-        const nextChar = text[i + 1];
+        const next = text[i + 1];
 
-        if (char === '"' && insideQuotes && nextChar === '"') {
+        if (char === '"' && insideQuotes && next === '"') {
+
             value += '"';
             i++;
-        }
 
-        else if (char === '"') {
+        } else if (char === '"') {
+
             insideQuotes = !insideQuotes;
-        }
 
-        else if (char === "," && !insideQuotes) {
+        } else if (char === "," && !insideQuotes) {
+
             row.push(value.trim());
             value = "";
-        }
 
-        else if ((char === "\n" || char === "\r") && !insideQuotes) {
+        } else if (
+            (char === "\n" || char === "\r") &&
+            !insideQuotes
+        ) {
 
-            if (char === "\r" && nextChar === "\n") {
+            if (char === "\r" && next === "\n") {
                 i++;
             }
 
@@ -67,10 +85,11 @@ function parseCSV(text) {
 
             row = [];
             value = "";
-        }
 
-        else {
+        } else {
+
             value += char;
+
         }
     }
 
@@ -81,6 +100,24 @@ function parseCSV(text) {
     }
 
     return rows;
+
+}
+
+
+/* =====================================
+   OBTENER VALOR DE UNA COLUMNA
+===================================== */
+
+function getColumn(row, headers, columnName) {
+
+    const index = headers.indexOf(normalizeText(columnName));
+
+    if (index === -1) {
+        return "";
+    }
+
+    return String(row[index] || "").trim();
+
 }
 
 
@@ -88,22 +125,22 @@ function parseCSV(text) {
    CONVERTIR FECHAS
 ===================================== */
 
-function parseDate(dateValue) {
+function parseDate(value) {
 
-    if (!dateValue) {
+    if (!value) {
         return null;
     }
 
-    const value = dateValue.trim();
+    const dateText = value.trim();
 
     let year;
     let month;
     let day;
 
     // Formato AAAA-MM-DD
-    if (/^\d{4}-\d{1,2}-\d{1,2}$/.test(value)) {
+    if (/^\d{4}-\d{1,2}-\d{1,2}$/.test(dateText)) {
 
-        const parts = value.split("-");
+        const parts = dateText.split("-");
 
         year = Number(parts[0]);
         month = Number(parts[1]);
@@ -112,9 +149,9 @@ function parseDate(dateValue) {
     }
 
     // Formato DD/MM/AAAA
-    else if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(value)) {
+    else if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateText)) {
 
-        const parts = value.split("/");
+        const parts = dateText.split("/");
 
         day = Number(parts[0]);
         month = Number(parts[1]);
@@ -123,11 +160,14 @@ function parseDate(dateValue) {
     }
 
     else {
+
         return null;
+
     }
 
     const date = new Date(year, month - 1, day);
 
+    // Validar que la fecha exista
     if (
         date.getFullYear() !== year ||
         date.getMonth() !== month - 1 ||
@@ -137,6 +177,7 @@ function parseDate(dateValue) {
     }
 
     return date;
+
 }
 
 
@@ -148,9 +189,13 @@ function formatMonth(date) {
 
     return new Intl.DateTimeFormat("es-CO", {
         month: "short"
-    }).format(date).replace(".", "").toUpperCase();
+    })
+    .format(date)
+    .replace(".", "")
+    .toUpperCase();
 
 }
+
 
 function formatDay(date) {
 
@@ -173,7 +218,9 @@ function createEventCard(event, index) {
         card.classList.add("extra-event");
     }
 
-    // Fecha
+
+    // FECHA
+
     const dateBox = document.createElement("div");
     dateBox.className = "event-date";
 
@@ -188,7 +235,8 @@ function createEventCard(event, index) {
     dateBox.append(month, day);
 
 
-    // Información
+    // INFORMACIÓN
+
     const info = document.createElement("div");
     info.className = "event-info";
 
@@ -202,6 +250,7 @@ function createEventCard(event, index) {
     if (event.description) {
 
         const description = document.createElement("p");
+
         description.className = "event-description";
         description.textContent = event.description;
 
@@ -210,9 +259,10 @@ function createEventCard(event, index) {
     }
 
 
+    // HORA Y LUGAR
+
     const meta = document.createElement("div");
     meta.className = "event-meta";
-
 
     if (event.time) {
 
@@ -222,7 +272,6 @@ function createEventCard(event, index) {
         meta.appendChild(time);
 
     }
-
 
     if (event.place) {
 
@@ -236,7 +285,8 @@ function createEventCard(event, index) {
     info.appendChild(meta);
 
 
-    // Imagen opcional
+    // IMAGEN OPCIONAL
+
     if (event.image && /^https?:\/\//i.test(event.image)) {
 
         const image = document.createElement("img");
@@ -255,7 +305,8 @@ function createEventCard(event, index) {
     }
 
 
-    // Botón de asistencia
+    // BOTÓN DE ASISTENCIA
+
     const actions = document.createElement("div");
     actions.className = "event-actions";
 
@@ -264,23 +315,23 @@ function createEventCard(event, index) {
     button.className = "event-button";
     button.textContent = "QUIERO ASISTIR ↗";
 
-    button.href = "https://ig.me/m/" + encodeURIComponent(INSTAGRAM_USER);
+    button.href =
+        "https://ig.me/m/" + encodeURIComponent(INSTAGRAM_USER);
 
     button.target = "_blank";
     button.rel = "noopener noreferrer";
-    button.setAttribute("aria-label", "Consultar asistencia para " + event.name);
 
     actions.appendChild(button);
-
 
     card.append(dateBox, info, actions);
 
     return card;
+
 }
 
 
 /* =====================================
-   MOSTRAR EVENTOS
+   MENSAJES DE LA AGENDA
 ===================================== */
 
 function showMessage(message) {
@@ -288,6 +339,7 @@ function showMessage(message) {
     eventsList.innerHTML = "";
 
     const element = document.createElement("p");
+
     element.className = "events-message";
     element.textContent = message;
 
@@ -297,6 +349,10 @@ function showMessage(message) {
 
 }
 
+
+/* =====================================
+   MOSTRAR EVENTOS
+===================================== */
 
 function renderEvents(events) {
 
@@ -309,6 +365,7 @@ function renderEvents(events) {
         );
 
         return;
+
     }
 
     events.forEach((event, index) => {
@@ -320,7 +377,6 @@ function renderEvents(events) {
     });
 
 
-    // Botón para desplegar más eventos
     if (events.length > INITIAL_EVENTS) {
 
         eventsFooter.classList.remove("hidden");
@@ -340,7 +396,7 @@ function renderEvents(events) {
 
 
 /* =====================================
-   CARGAR EVENTOS DE GOOGLE SHEETS
+   CARGAR EVENTOS DESDE GOOGLE SHEETS
 ===================================== */
 
 async function loadEvents() {
@@ -349,10 +405,12 @@ async function loadEvents() {
 
     try {
 
-        const response = await fetch(SHEET_URL);
+        const response = await fetch(SHEET_URL, {
+            cache: "no-store"
+        });
 
         if (!response.ok) {
-            throw new Error("No se pudo consultar Google Sheets.");
+            throw new Error("Google Sheets no respondió correctamente.");
         }
 
         const csvText = await response.text();
@@ -364,66 +422,70 @@ async function loadEvents() {
             renderEvents([]);
 
             return;
+
         }
 
 
-        // Encabezados de la hoja
-        const headers = rows[0].map(header =>
-            header.trim().toLowerCase()
-        );
+        // NORMALIZAR ENCABEZADOS
+        const headers = rows[0].map(normalizeText);
 
 
-        const getColumn = (row, name) => {
-
-            const index = headers.indexOf(name);
-
-            return index >= 0 ? (row[index] || "").trim() : "";
-
-        };
-
-
+        // FECHA ACTUAL LOCAL
         const today = new Date();
 
         today.setHours(0, 0, 0, 0);
 
 
+        // CONVERTIR FILAS EN EVENTOS
         const events = rows.slice(1).map(row => {
 
             return {
 
-                name: getColumn(row, "nombre"),
+                name: getColumn(row, headers, "nombre"),
 
-                date: parseDate(getColumn(row, "fecha")),
+                date: parseDate(
+                    getColumn(row, headers, "fecha")
+                ),
 
-                time: getColumn(row, "hora"),
+                time: getColumn(row, headers, "hora"),
 
-                description: getColumn(row, "descripcion"),
+                description: getColumn(row, headers, "descripcion"),
 
-                place: getColumn(row, "lugar"),
+                place: getColumn(row, headers, "lugar"),
 
-                image: getColumn(row, "imagen"),
+                image: getColumn(row, headers, "imagen"),
 
-                status: getColumn(row, "estado").toLowerCase()
+                status: normalizeText(
+                    getColumn(row, headers, "estado")
+                )
 
             };
 
         });
 
 
-        // Solo eventos activos, completos y futuros
+        // ESTADOS QUE SE MOSTRARÁN
+        const acceptedStatuses = [
+            "activo",
+            "activa",
+            "visible"
+        ];
+
+
+        // FILTRAR EVENTOS FUTUROS Y VISIBLES
         const upcomingEvents = events.filter(event => {
 
             return (
                 event.name &&
                 event.date &&
                 event.date >= today &&
-                event.status === "activo"
+                acceptedStatuses.includes(event.status)
             );
 
         });
 
 
-        // Orden cronológico
+        // ORDENAR DEL MÁS PRÓXIMO AL MÁS LEJANO
         upcomingEvents.sort((a, b) => {
 
             return a.date - b.date;
@@ -437,7 +499,7 @@ async function loadEvents() {
 
     catch (error) {
 
-        console.error("Error cargando eventos:", error);
+        console.error("Error cargando eventos CDS:", error);
 
         showMessage(
             "No pudimos cargar los eventos. Intenta nuevamente más tarde."
@@ -472,11 +534,7 @@ toggleEventsButton.addEventListener("click", function () {
 
 
 /* =====================================
-   INICIAR PÁGINA
+   INICIAR AGENDA
 ===================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    loadEvents();
-
-});
+loadEvents();
