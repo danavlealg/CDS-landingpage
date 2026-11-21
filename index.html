@@ -1,245 +1,212 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="CDS - Una generación que transforma. Conoce nuestros eventos y conecta con nuestra comunidad.">
+    <meta name="description" content="CDS - Una generación que transforma.">
     <meta name="theme-color" content="#101010">
 
     <title>CDS | Casa de Dios</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
-    <!-- ENCABEZADO -->
-    <header class="header container">
-
-        <a href="#" class="logo">
-            <img src="assets/logo-cds-limpio.png" alt="Logo CDS">
-        </a>
-
-        <span class="header-label">CASA DE DIOS</span>
-
-    </header>
-
-
-    <main>
-
-        <!-- PORTADA -->
-        <section class="hero container">
-
-            <p class="eyebrow">BIENVENIDOS A CDS</p>
-
-            <h1>
-                Somos una generación
-                <span>que transforma.</span>
-            </h1>
-
-            <p class="hero-description">
-                Conectamos con Dios, echamos raíces en Su propósito
-                y crecemos para dar fruto.
-            </p>
-
-            <div class="hero-image">
-                <img
-                    src="assets/jovenes-cds.jpg"
-                    alt="Comunidad juvenil CDS"
-                    class="main-image"
-                >
-            </div>
-
-        </section>
-
-
-        <!-- REDES SOCIALES -->
-        <section class="social-section container">
-
-            <p class="eyebrow">SÍGUENOS Y CONECTA</p>
-
-            <div class="social-links">
-
-                <a href="https://www.instagram.com/TU_USUARIO/"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Instagram CDS">
-                    Instagram ↗
-                </a>
-
-                <a href="https://www.youtube.com/@TU_USUARIO"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="YouTube CDS">
-                    YouTube ↗
-                </a>
-
-                <a href="https://www.tiktok.com/@TU_USUARIO"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="TikTok CDS">
-                    TikTok ↗
-                </a>
-
-                <a href="TU_ENLACE_SPOTIFY"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Spotify CDS">
-                    Spotify ↗
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- AGENDA CDS -->
-        <section class="agenda-section container" id="eventos">
-
-            <div class="agenda-heading">
-
-                <div>
-                    <p class="eyebrow">AGENDA CDS</p>
-
-                    <h2>Hay algo que vivir<span>.</span></h2>
-
-                    <p class="agenda-description">
-                        Descubre nuestros próximos encuentros,
-                        actividades y momentos para compartir.
-                    </p>
-                </div>
-
-                <span class="agenda-tag">NUESTROS EVENTOS</span>
-
-            </div>
-
-
-            <!-- EVENTOS CARGADOS DESDE GOOGLE SHEETS -->
-            <div id="events-list" class="events-list">
-
-                <div class="events-message">
-                    Cargando próximos eventos...
-                </div>
-
-            </div>
-
-
-            <div id="events-footer" class="events-footer hidden">
-
-                <button id="toggle-events" class="view-events-button">
-                    VER TODOS LOS EVENTOS ↓
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- BOTONES PRINCIPALES -->
-        <section class="explore-section container">
-
-            <div class="explore-heading">
-
-                <p class="eyebrow">TU LUGAR ESTÁ AQUÍ</p>
-
-                <h2>Conecta con CDS.</h2>
-
-            </div>
-
-
-            <div class="explore-grid">
-
-                <a href="TU_ENLACE_SOY_NUEVO"
-                   class="explore-card">
-
-                    <span class="card-number">01</span>
-
-                    <h3>SOY NUEVO</h3>
-
-                    <p>Queremos conocerte y darte la bienvenida.</p>
-
-                    <span class="card-arrow">↗</span>
-
-                </a>
-
-
-                <a href="TU_ENLACE_INSCRIPCIONES"
-                   class="explore-card">
-
-                    <span class="card-number">02</span>
-
-                    <h3>INSCRIPCIONES</h3>
-
-                    <p>Encuentra nuestras actividades y participa.</p>
-
-                    <span class="card-arrow">↗</span>
-
-                </a>
-
-
-                <a href="TU_ENLACE_ORACION"
-                   class="explore-card">
-
-                    <span class="card-number">03</span>
-
-                    <h3>PETICIÓN DE ORACIÓN</h3>
-
-                    <p>Queremos acompañarte y orar contigo.</p>
-
-                    <span class="card-arrow">↗</span>
-
-                </a>
-
-
-                <a href="https://www.instagram.com/TU_USUARIO/"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="explore-card">
-
-                    <span class="card-number">04</span>
-
-                    <h3>CONTACTO</h3>
-
-                    <p>Conecta con nuestro equipo.</p>
-
-                    <span class="card-arrow">↗</span>
-
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- PIE DE PÁGINA -->
-    <footer class="footer container">
-
-        <div>
-            <strong>CDS</strong>
-            <p>Casa de Dios</p>
-        </div>
-
-        <p class="footer-message">
-            Una comunidad, una familia.
+<header class="header container">
+    <a href="#" class="logo" aria-label="CDS - Inicio">
+        <img src="./assets/logo-cds.png" alt="Logo oficial de CDS">
+    </a>
+    <span class="header-label">CASA DE DIOS</span>
+</header>
+
+<main>
+
+    <!-- PORTADA -->
+    <section class="hero container">
+        <p class="eyebrow">BIENVENIDOS A CDS</p>
+
+        <h1>
+            Somos una generación
+            <span>que transforma.</span>
+        </h1>
+
+        <p class="hero-description">
+            Conectamos con Dios, echamos raíces en Su propósito
+            y crecemos para dar fruto.
         </p>
 
-        <span class="copyright">
-            © CDS
-        </span>
+        <div class="hero-image">
+            <img
+                src="./assets/jovenes-cds.jpg"
+                alt="Comunidad juvenil CDS"
+                class="main-image"
+            >
+        </div>
+    </section>
 
-    </footer>
+
+    <!-- REDES SOCIALES -->
+    <section class="social-section container">
+        <p class="eyebrow">SÍGUENOS Y CONECTA</p>
+
+        <div class="social-links">
+
+            <a href="https://www.instagram.com/TU_USUARIO/"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Instagram CDS">
+
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5"
+                          fill="none" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="4"
+                            fill="none" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="17.5" cy="6.8" r="1.2" fill="currentColor"/>
+                </svg>
+
+                <span>Instagram</span>
+            </a>
 
 
-    <script src="script.js"></script>
+            <a href="https://www.youtube.com/@TU_USUARIO"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="YouTube CDS">
+
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.6A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.6 8.9.6 8.9.6s7 0 8.9-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8Z"
+                          fill="currentColor"/>
+                    <path d="m9.5 15.5 6-3.5-6-3.5v7Z" fill="#101010"/>
+                </svg>
+
+                <span>YouTube</span>
+            </a>
+
+
+            <a href="https://www.tiktok.com/@TU_USUARIO"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="TikTok CDS">
+
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19.6 7.1a5.5 5.5 0 0 1-3.5-1.3V15a6.5 6.5 0 1 1-6.5-6.5c.4 0 .8 0 1.2.1v3.6a3 3 0 1 0 2 2.8V2h3.5c.2 2.1 1.6 3.8 3.7 4.2v.9Z"
+                          fill="currentColor"/>
+                </svg>
+
+                <span>TikTok</span>
+            </a>
+
+
+            <a href="TU_ENLACE_SPOTIFY"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Spotify CDS">
+
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" fill="currentColor"/>
+                    <path d="M6.5 9.2c3.8-1.1 8.2-.7 11.3 1.2M7.2 12.3c3.1-.8 6.8-.5 9.5 1M8 15.2c2.5-.6 5.3-.3 7.5.8"
+                          fill="none" stroke="#101010" stroke-width="1.5"
+                          stroke-linecap="round"/>
+                </svg>
+
+                <span>Spotify</span>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- AGENDA CDS -->
+    <section class="agenda-section container" id="eventos">
+
+        <div class="agenda-heading">
+            <div>
+                <p class="eyebrow">AGENDA CDS</p>
+                <h2>Hay algo que vivir<span>.</span></h2>
+
+                <p class="agenda-description">
+                    Descubre nuestros próximos encuentros,
+                    actividades y momentos para compartir.
+                </p>
+            </div>
+
+            <span class="agenda-tag">NUESTROS EVENTOS</span>
+        </div>
+
+        <div id="events-list" class="events-list" aria-live="polite">
+            <p class="events-message">Cargando próximos eventos...</p>
+        </div>
+
+        <div id="events-footer" class="events-footer hidden">
+            <button id="toggle-events" class="view-events-button" type="button">
+                VER TODOS LOS EVENTOS ↓
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- CONECTA CON CDS -->
+    <section class="explore-section container">
+
+        <div class="explore-heading">
+            <p class="eyebrow">TU LUGAR ESTÁ AQUÍ</p>
+            <h2>Conecta con CDS.</h2>
+        </div>
+
+        <div class="explore-grid">
+
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSckOwHx0VeUJcgRLZhmaBZai-RyITolSwy7_1oaXQQPa5oEQg/viewform?usp=sharing&ouid=114823240534145628584" class="explore-card">
+                <span class="card-number">01</span>
+                <h3>QUIERO SER PARTE DE CDS</h3>
+                <p>¿Quieres venir a nuestros servicios de CDS?, deja tus datos para comunicarnos contigo.</p>
+                <span class="card-arrow">↗</span>
+            </a>
+
+            <a href="TU_ENLACE_WORKBOOK" class="explore-card">
+                <span class="card-number">02</span>
+                <h3>WORKBOOK CDS</h3>
+                <p>Encuentra recursos, materiales y herramientas para crecer.</p>
+                <span class="card-arrow">↗</span>
+            </a>
+
+            <a href="TU_ENLACE_ORACION" class="explore-card">
+                <span class="card-number">03</span>
+                <h3>PETICIÓN DE ORACIÓN</h3>
+                <p>Queremos acompañarte y orar contigo.</p>
+                <span class="card-arrow">↗</span>
+            </a>
+
+            <a href=""
+               target="_blank" rel="noopener noreferrer"
+               class="explore-card">
+                <span class="card-number">04</span>
+                <h3>CONTACTO</h3>
+                <p>Conecta con nuestro equipo.</p>
+                <span class="card-arrow">↗</span>
+            </a>
+
+        </div>
+    </section>
+
+</main>
+
+
+<footer class="footer container">
+    <div>
+        <strong>CDS</strong>
+        <p>Casa de Dios</p>
+    </div>
+
+    <p class="footer-message">Una comunidad, una familia.</p>
+
+    <span class="copyright">© CDS</span>
+</footer>
+
+<script src="./script.js"></script>
 
 </body>
 </html>
