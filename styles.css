@@ -1,24 +1,18 @@
-/* ==========================================
-   CDS LANDING PAGE
-   Design System - Version 1.1
-========================================== */
 
-/* 1. VARIABLES GLOBALES */
+/* =====================================
+   CDS - ESTILOS GENERALES
+===================================== */
 
 :root {
-    --color-background: #101010;
-    --color-surface: #1c1c1c;
-    --color-surface-hover: #262626;
-    --color-text: #ffffff;
-    --color-muted: #999999;
-    --color-border: #303030;
-
-    --font-primary: 'Inter', Arial, sans-serif;
-
-    --container-width: 1200px;
+    --background: #101010;
+    --surface: #191919;
+    --surface-hover: #222222;
+    --text: #ffffff;
+    --muted: #999999;
+    --border: #303030;
+    --font: 'Inter', sans-serif;
+    --max-width: 1200px;
 }
-
-/* 2. RESET */
 
 * {
     margin: 0;
@@ -31,11 +25,10 @@ html {
 }
 
 body {
-    background-color: var(--color-background);
-    color: var(--color-text);
-    font-family: var(--font-primary);
-    min-height: 100vh;
-    overflow-x: hidden;
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--font);
+    line-height: 1.6;
 }
 
 a {
@@ -43,73 +36,69 @@ a {
     text-decoration: none;
 }
 
-img {
-    display: block;
-    max-width: 100%;
+button {
+    font-family: inherit;
+    cursor: pointer;
 }
 
-/* 3. CONTENEDOR GENERAL */
-
 .container {
-    width: min(90%, var(--container-width));
+    width: 90%;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
-/* 4. HEADER */
+.eyebrow {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
 
 .header {
-    min-height: 100px;
+    min-height: 110px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    border-bottom: 1px solid var(--color-border);
-}
-
-/* Logo oficial */
-
-.logo {
-    display: flex;
-    align-items: center;
-    width: 125px;
+    border-bottom: 1px solid var(--border);
 }
 
 .logo img {
-    width: 100%;
+    display: block;
+    width: 125px;
     height: auto;
     object-fit: contain;
 }
 
 .header-label {
+    color: var(--muted);
     font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--color-muted);
+    letter-spacing: 2px;
+    font-weight: 600;
 }
 
-/* 5. HERO SECTION */
+
+/* =====================================
+   HERO
+===================================== */
 
 .hero {
     padding-top: 90px;
-}
-
-.hero-content {
-    max-width: 900px;
-    margin-bottom: 45px;
-}
-
-.eyebrow {
-    color: var(--color-muted);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    margin-bottom: 22px;
+    padding-bottom: 70px;
 }
 
 .hero h1 {
+    max-width: 950px;
+    margin-top: 20px;
     font-size: clamp(42px, 7vw, 88px);
     line-height: 1.05;
-    letter-spacing: -4px;
-    font-weight: 800;
+    letter-spacing: -5px;
+    font-weight: 700;
 }
 
 .hero h1 span {
@@ -118,232 +107,422 @@ img {
 }
 
 .hero-description {
-    max-width: 650px;
+    max-width: 580px;
     margin-top: 25px;
-
-    color: var(--color-muted);
-    font-size: 17px;
+    margin-bottom: 45px;
+    color: var(--muted);
+    font-size: 16px;
     line-height: 1.8;
 }
 
-/* 6. IMAGEN PRINCIPAL */
-
 .hero-image {
     width: 100%;
-    margin-bottom: 35px;
     overflow: hidden;
-    border-radius: 5px;
-    background-color: var(--color-surface);
+    border-radius: 12px;
+    background: var(--surface);
 }
 
 .main-image {
+    display: block;
     width: 100%;
     aspect-ratio: 16 / 7;
     object-fit: cover;
-    object-position: center;
-    transition: transform 0.6s ease;
+    transition: transform 0.5s ease;
 }
 
 .hero-image:hover .main-image {
     transform: scale(1.02);
 }
 
-/* 7. REDES SOCIALES */
+
+/* =====================================
+   REDES SOCIALES
+===================================== */
 
 .social-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 25px 0 65px;
-
-    border-bottom: 1px solid var(--color-border);
-}
-
-.social-label {
-    color: var(--color-muted);
-    font-size: 10px;
-    letter-spacing: 2px;
+    padding: 35px 0 75px;
+    border-bottom: 1px solid var(--border);
 }
 
 .social-links {
     display: flex;
-    align-items: center;
-    gap: 28px;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 22px;
 }
 
 .social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: transform 0.3s ease,
-                opacity 0.3s ease;
-}
-
-.social-links img {
-    width: 25px;
-    height: 25px;
+    color: var(--text);
+    font-size: 14px;
+    transition: color 0.2s ease;
 }
 
 .social-links a:hover {
-    transform: translateY(-4px);
-    opacity: 0.6;
+    color: var(--muted);
 }
 
-/* 8. EXPLORE SECTION */
 
-.explore {
-    padding-top: 85px;
-    padding-bottom: 100px;
+/* =====================================
+   AGENDA CDS
+===================================== */
+
+.agenda-section {
+    padding-top: 95px;
+    padding-bottom: 95px;
+    border-bottom: 1px solid var(--border);
 }
 
-.section-heading {
+.agenda-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
     margin-bottom: 40px;
 }
 
-.section-heading h2 {
-    font-size: clamp(32px, 5vw, 55px);
-    letter-spacing: -2px;
+.agenda-heading h2 {
+    margin-top: 14px;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -3px;
+}
+
+.agenda-heading h2 span {
+    color: #888888;
+}
+
+.agenda-description {
+    max-width: 500px;
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.agenda-tag {
+    padding: 9px 13px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+
+/* LISTA DE EVENTOS */
+
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.event-card {
+    display: grid;
+    grid-template-columns: 85px 1fr auto;
+    align-items: center;
+    gap: 25px;
+    padding: 25px 0;
+    border-top: 1px solid var(--border);
+    animation: appear 0.4s ease both;
+}
+
+.event-date {
+    width: 75px;
+    min-height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--surface);
+    border-radius: 10px;
+}
+
+.event-date-month {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.event-date-day {
+    color: var(--text);
+    font-size: 29px;
+    line-height: 1.2;
     font-weight: 700;
 }
 
-/* 9. TARJETAS */
+.event-info {
+    min-width: 0;
+}
+
+.event-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.event-description {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 9px;
+    color: #888888;
+    font-size: 12px;
+}
+
+.event-image {
+    width: 100%;
+    max-width: 180px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 14px;
+}
+
+.event-actions {
+    display: flex;
+    align-items: center;
+}
+
+.event-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 17px;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    color: var(--text);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.event-button:hover {
+    color: var(--background);
+    background: var(--text);
+    border-color: var(--text);
+}
+
+.events-message {
+    padding: 30px 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.events-footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 35px;
+}
+
+.view-events-button {
+    padding: 14px 25px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+.view-events-button:hover {
+    background: var(--text);
+    color: var(--background);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.event-card.extra-event {
+    display: none;
+}
+
+.events-list.expanded .event-card.extra-event {
+    display: grid;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================
+   BOTONES PRINCIPALES
+===================================== */
+
+.explore-section {
+    padding-top: 90px;
+    padding-bottom: 100px;
+}
+
+.explore-heading h2 {
+    margin-top: 12px;
+    font-size: clamp(35px, 5vw, 55px);
+    letter-spacing: -2px;
+}
 
 .explore-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 35px;
 }
 
 .explore-card {
     position: relative;
-    min-height: 210px;
-    padding: 30px;
-
+    min-height: 185px;
+    padding: 28px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 5px;
-
-    transition: background-color 0.3s ease,
-                transform 0.3s ease,
-                border-color 0.3s ease;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: all 0.25s ease;
 }
 
 .explore-card:hover {
-    background-color: var(--color-surface-hover);
-    border-color: #666666;
-    transform: translateY(-4px);
+    background: var(--surface-hover);
+    border-color: var(--border);
+    transform: translateY(-3px);
 }
 
 .card-number {
-    position: absolute;
-    top: 25px;
-    left: 30px;
-
+    color: var(--muted);
     font-size: 11px;
-    color: var(--color-muted);
-    letter-spacing: 2px;
+    margin-bottom: 18px;
 }
 
 .explore-card h3 {
-    font-size: 23px;
-    margin-bottom: 10px;
+    font-size: 17px;
+    letter-spacing: 0.5px;
 }
 
 .explore-card p {
-    color: var(--color-muted);
-    font-size: 13px;
-    line-height: 1.6;
     max-width: 300px;
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 13px;
 }
 
 .card-arrow {
     position: absolute;
-    top: 25px;
-    right: 30px;
-    font-size: 22px;
+    right: 25px;
+    bottom: 23px;
+    font-size: 21px;
 }
 
-/* 10. FOOTER */
+
+/* =====================================
+   FOOTER
+===================================== */
 
 .footer {
-    min-height: 100px;
-
+    min-height: 110px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-
-    border-top: 1px solid var(--color-border);
-
-    color: var(--color-muted);
-    font-size: 11px;
-    letter-spacing: 1px;
+    align-items: center;
+    gap: 20px;
+    border-top: 1px solid var(--border);
 }
 
-/* 11. TABLETS */
+.footer strong {
+    font-size: 19px;
+}
+
+.footer p,
+.copyright {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.footer-message {
+    text-align: center;
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
 
 @media (max-width: 900px) {
 
-    .hero {
-        padding-top: 65px;
-    }
-
     .hero h1 {
-        letter-spacing: -2px;
+        letter-spacing: -3px;
     }
 
-    .main-image {
-        aspect-ratio: 16 / 9;
+    .agenda-heading {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
-    .explore-card {
-        min-height: 190px;
+    .event-card {
+        grid-template-columns: 75px 1fr;
+        gap: 18px;
+    }
+
+    .event-actions {
+        grid-column: 2;
     }
 
 }
 
-/* 12. CELULARES */
+
+/* =====================================
+   MÓVILES
+===================================== */
 
 @media (max-width: 600px) {
 
     .container {
-        width: 90%;
+        width: 88%;
     }
 
     .header {
-        min-height: 75px;
+        min-height: 85px;
     }
 
-    .logo {
+    .logo img {
         width: 95px;
     }
 
     .header-label {
         font-size: 9px;
-        letter-spacing: 2px;
     }
 
     .hero {
-        padding-top: 55px;
-    }
-
-    .hero-content {
-        margin-bottom: 30px;
+        padding-top: 65px;
+        padding-bottom: 45px;
     }
 
     .hero h1 {
-        font-size: clamp(40px, 10vw, 55px);
-        letter-spacing: -2px;
+        font-size: clamp(39px, 11vw, 58px);
+        letter-spacing: -2.5px;
     }
 
     .hero-description {
         font-size: 14px;
-        line-height: 1.7;
     }
 
     .main-image {
@@ -351,40 +530,98 @@ img {
     }
 
     .social-section {
-        flex-direction: column;
-        gap: 25px;
-        padding: 25px 0 45px;
+        padding-bottom: 50px;
     }
 
     .social-links {
-        gap: 32px;
+        gap: 18px;
     }
 
-    .explore {
-        padding-top: 60px;
+    .social-links a {
+        font-size: 12px;
+    }
+
+    .agenda-section {
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
+
+    .agenda-heading h2 {
+        font-size: 42px;
+        letter-spacing: -2px;
+    }
+
+    .agenda-tag {
+        font-size: 9px;
+    }
+
+    .event-card {
+        grid-template-columns: 60px 1fr;
+        gap: 14px;
+        padding: 22px 0;
+    }
+
+    .event-date {
+        width: 58px;
+        min-height: 65px;
+    }
+
+    .event-date-day {
+        font-size: 25px;
+    }
+
+    .event-title {
+        font-size: 15px;
+    }
+
+    .event-description {
+        font-size: 12px;
+    }
+
+    .event-meta {
+        gap: 8px;
+        font-size: 11px;
+    }
+
+    .event-actions {
+        grid-column: 2;
+    }
+
+    .event-button {
+        padding: 11px 13px;
+        font-size: 9px;
+    }
+
+    .explore-section {
+        padding-top: 65px;
         padding-bottom: 65px;
     }
 
     .explore-grid {
         grid-template-columns: 1fr;
+        gap: 10px;
     }
 
     .explore-card {
-        min-height: 175px;
-        padding: 25px;
+        min-height: 150px;
+        padding: 23px;
     }
 
     .footer {
-        flex-direction: column;
-        justify-content: center;
-        gap: 12px;
-        text-align: center;
         padding: 25px 0;
+        flex-wrap: wrap;
+    }
+
+    .footer-message {
+        display: none;
     }
 
 }
 
-/* 13. ACCESIBILIDAD */
+
+/* =====================================
+   ACCESIBILIDAD
+===================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -397,60 +634,3 @@ img {
     }
 
 }
-
-/* 8. Adaptación para tablets */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .container {
-        width: 88%;
-    }
-}
-
-
-/* CALENDARIO CDS - DISEÑO MEJORADO */
-
-.calendar-section {
-    padding: 90px 0;
-    border-top: 1px solid #303030;
-}
-
-.calendar-section h2 {
-    font-size: clamp(38px, 5vw, 60px);
-    letter-spacing: -2px;
-    margin: 15px 0;
-}
-
-.calendar-description {
-    color: #999;
-    margin-bottom: 35px;
-    font-size: 16px;
-}
-
-.calendar-container {
-    width: 100%;
-    max-width: 100%;
-    height: 520px;
-    overflow: hidden;
-    border: 1px solid #303030;
-    border-radius: 16px;
-    background: #101010;
-}
-
-.calendar-container iframe {
-    display: block;
-    width: 100%;
-    height: 520px;
-    border: 0;
-}
-
-@media (max-width: 600px) {
-    .calendar-section {
-        padding: 60px 0;
-    }
-
-    .calendar-container,
-    .calendar-container iframe {
-        height: 500px;
-    }
-}
-
-
